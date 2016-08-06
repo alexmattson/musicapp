@@ -1,0 +1,28 @@
+<form class="bs-example bs-example-form" data-example-id="simple-input-groups" action="<%= @route %>" method="post">
+
+  <%= auth_token %>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="sizing-addon2">email</span>
+    <input type="text" name="user[email]" value="<%= @user.email %>" class="form-control" aria-describedby="basic-addon1">
+  </div>
+
+  </br>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="sizing-addon2">choose password</span>
+    <input type="password" name="user[password]" value="" class="form-control" aria-describedby="basic-addon1">
+  </div>
+
+  </br>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="sizing-addon2">confirm password</span>
+    <input type="password" name="user[password2]" value="" class="form-control" aria-describedby="basic-addon1">
+  </div>
+
+  </br>
+
+  <input type="submit" value="Sign Up" class="btn btn-primary">
+
+</form>

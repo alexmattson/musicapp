@@ -1,0 +1,41 @@
+<form action="<%= @route %>" method="post">
+  <% unless @album.id.nil? %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+  <%= auth_token %>
+
+  <label> Title:
+    <input type="text" name="album[title]" value="<%= @album.title %>">
+  </label>
+
+  <label>Band:
+    <select name="album[band_id]">
+      <% @bands.each do |band| %>
+        <option value="<%= band.id %>"
+            <% if band == @band %>
+              selected
+            <% end %>>
+          <%= band.name %>
+        </option>
+      <% end %>
+    </select>
+  </label>
+
+  <label>
+    Live <input type="radio" name="album[recording_type]" value="Live"
+            <% if "Live" == @album.recording_type %>
+              checked
+            <% end %>>
+    Studio <input type="radio" name="album[recording_type]" value="Studio"
+            <% if "Studio" == @album.recording_type %>
+              checked
+            <% end %>>
+  </label>
+
+  <label> Year:
+    <input type="text" name="album[year]" value="<%= @album.year %>">
+  </label>
+
+  <% submit_text = @album.id.nil? ? "Add Album" : "Update Album" %>
+  <input type="submit" value="<%= submit_text %>">
+</form>

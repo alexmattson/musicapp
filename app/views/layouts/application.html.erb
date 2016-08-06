@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MusicApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+
+  <%= stylesheet_link_tag 'sortable-theme-dark' %>
+  <%= javascript_include_tag 'sortable.min.js' %>
+  
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% unless flash[:errors].nil? %>
+  <div class="bs-callout bs-callout-danger" id="errors">
+    <% flash[:errors].each do |error| %>
+    <h4><%= error %></h4>
+    <% end %>
+  </div>
+  <% end %>
+  <div id="wrapper">
+
+    <div id="sidebar-wrapper">
+
+      <nav class="sidebar-nav">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand"> <%= link_to image_tag("logo"), bands_url %></li>
+          <% if logged_in? %>
+          <li class="center"><%= link_to current_user.email, user_url(current_user) %></li>
+          <li>
+            <div class="btn-group btn-group-justified" role="group">
+              <div class="btn-group" role="group">
+                <%= button_to "Log Out", session_url, method: :delete, class: "btn btn-default"%>
+              </div>
+            </div>
+          </li>
+          <li><%= link_to "Bands", bands_url, method: :get %></li>
+          <li><%= link_to "Albums", albums_url, method: :get %></li>
+          <li><%= link_to "Tracks", tracks_url, method: :get %></li>
+        </ul>
+        <% else %>
+        <li>
+          <div class="btn-group btn-group-justified" role="group">
+            <div class="btn-group" role="group">
+              <%= button_to "Sign In", new_session_url, method: :get, class: "btn btn-default" %>
+            </div>
+            <div class="btn-group" role="group">
+              <%= button_to "Sign Up", new_user_url, method: :get, class: "btn btn-default" %>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <% end %>
+    </nav>
+  </div>
+  <div id="page-content-wrapper">
+    <%= yield %>
+  </div>
+
+
+</div>
+</body>
+</html>

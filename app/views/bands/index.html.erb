@@ -1,0 +1,25 @@
+<h1 class="index_header">Bands</h1>
+<%= paginate @bands, window: 2 %>
+
+
+
+<table class="table" data-sortable>
+<thead>
+  <tr>
+    <th>
+      <%= link_to "New Band", new_band_url, class: "list-group-item list-group-item-success" %>
+    </br>
+      Sort Names On Page
+    </th>
+  </tr>
+</thead>
+<tbody>
+    <% @bands.each do |band| %>
+    <tr>
+    <td>
+      <%= link_to band.name, band_url(band), type: "button" %>
+    </td>
+  </tr>
+    <% end %>
+  </tbody>
+</table>

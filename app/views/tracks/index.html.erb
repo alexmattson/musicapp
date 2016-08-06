@@ -1,0 +1,25 @@
+<h1 class="index_header">Tracks</h1>
+<%= paginate @tracks, window: 2 %>
+
+<table class="table" data-sortable>
+  <thead>
+    <tr>
+      <th>Track</th>
+      <th>Track Type</th>
+      <th>Album</th>
+      <th>Band</th>
+      <th>Year</th>
+    </tr>
+</thead>
+<tbody>
+    <% @tracks.each do |track| %>
+    <tr>
+      <td><%= link_to short(track.name), track_url(track) %></td>
+      <td><%= track.track_type %></td>
+      <td><%= link_to track.album.title, album_url(track.album_id) %></td>
+      <td><%= link_to track.band.name, band_url(track.album.band_id) %></td>
+      <td><%= track.album.year %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

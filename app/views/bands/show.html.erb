@@ -1,0 +1,27 @@
+<div class="background-header center-header">
+  <h1><%= @band.name %></h1>
+</div>
+
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+    <%= button_to "New Album", new_album_url, method: :get, class: "btn btn-default" %>
+  </div>
+  <div class="btn-group" role="group">
+    <%= button_to "Edit Band", edit_band_url(@band), method: :get, class: "btn btn-default" %>
+  </div>
+  <div class="btn-group" role="group">
+    <%= button_to "Delete Band", band_url(@band), method: :delete, class: "btn btn-default" %>
+  </div>
+  <div class="btn-group" role="group">
+    <%= button_to "All Bands", bands_url, method: :get, class: "btn btn-default" %>
+  </div>
+</div>
+
+
+
+<h3>Albums</h3>
+<div class="list-group">
+  <% @albums.each do |album| %>
+      <%= link_to album.title, album_url(album), class: "list-group-item" %>
+  <% end %>
+</div>

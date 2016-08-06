@@ -1,0 +1,39 @@
+
+
+
+<div class="background-image">
+
+  <h1 class="splash-header">Lets get started </h1>
+  <p class="center">
+    Find the lyrics to the music that you love
+  </p>
+
+</br>
+  <p class="center">
+    test the app with: test@email.com, password
+  </p>
+
+  <h1>Sign in</h1>
+
+  <form class="bs-example bs-example-form" data-example-id="simple-input-groups" action="<%= @route %>" method="post">
+
+    <%= auth_token %>
+
+    <div class="input-group">
+      <span class="input-group-addon" id="sizing-addon2">email</span>
+      <input type="text" name="user[email]" value="<%= @user.email %>" class="form-control" aria-describedby="basic-addon1">
+    </div>
+
+    </br>
+
+    <div class="input-group">
+      <span class="input-group-addon" id="sizing-addon2">password</span>
+      <input type="password" name="user[password]" value="" class="form-control" aria-describedby="basic-addon1">
+    </div>
+
+    </br>
+
+    <input type="submit" value="Sign In" class="btn btn-primary">
+
+  </form>
+</div>

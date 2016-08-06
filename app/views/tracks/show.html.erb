@@ -1,0 +1,29 @@
+<div class="background-header center-header">
+  <h1><%= @track.name %></h1>
+  by
+  <h2> <%= @band.name %> </h2>
+  on
+  <h3><%= @album.title %></h3>
+</div>
+
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+    <%= button_to "Edit Track", edit_track_url(@track), method: :get, class: "btn btn-default" %>
+  </div>
+  <div class="btn-group" role="group">
+    <%= button_to "Delete Track", track_url(@track), method: :delete, class: "btn btn-default" %>
+  </div>
+  <div class="btn-group" role="group">
+    <%= button_to "Back to #{@album.title}", album_url(@album), method: :get, class: "btn btn-default" %>
+  </div>
+</div>
+
+<h3>Lyrics</h3>
+<%=  ugly_lyrics(@track.lyrics) %>
+
+
+<h3>Notes</h3>
+
+<%= render "notes/note", notes: @notes %>
+<%= render "notes/form", route: @note_route,
+                         track: @track%>
