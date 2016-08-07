@@ -13,7 +13,7 @@ MusicApp was a project focused around the creation of a stripped down authentica
 
 The goal being a comprehensive understanding of the works of modern authentication systems.
 
-[![Screenshot](/doc/sample.png)](//github.com/amattson21/musicapp-sample/)
+[![Screenshot](/app/assets/images/sample.png)](//github.com/amattson21/musicapp-sample/)
 
 fix-it list:
 ------
