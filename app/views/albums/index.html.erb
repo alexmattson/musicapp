@@ -1,12 +1,15 @@
 <h1 class="index_header">Albums</h1>
 <%= paginate @albums, window: 2 %>
 
-<table class="table">
-  <tr>
-    <td>Album</td>
-    <td><%= fa_icon "arrow-down" %> Band</td>
-    <td>Year</td>
-  </tr>
+<table class="table" data-sortable>
+  <thead>
+    <tr>
+      <th>Album</th>
+      <th>Band</th>
+      <th>Year</th>
+    </tr>
+</thead>
+<tbody>
   <% @albums.each do |album| %>
     <tr>
       <td><%=link_to album.title, album_url(album) %></td>
@@ -14,4 +17,5 @@
       <td><%= album.year %></td>
     </tr>
   <% end %>
+</tbody>
 </table>

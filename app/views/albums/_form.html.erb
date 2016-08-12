@@ -4,38 +4,57 @@
   <% end %>
   <%= auth_token %>
 
-  <label> Title:
-    <input type="text" name="album[title]" value="<%= @album.title %>">
-  </label>
 
-  <label>Band:
-    <select name="album[band_id]">
-      <% @bands.each do |band| %>
-        <option value="<%= band.id %>"
-            <% if band == @band %>
-              selected
-            <% end %>>
-          <%= band.name %>
-        </option>
-      <% end %>
-    </select>
-  </label>
+  <div class="input-group">
+    <span class="input-group-addon" id="sizing-addon2">Title</span>
+    <input type="text" name="album[title]" value="<%= @album.title %>" class="form-control" aria-describedby="basic-addon1">
+  </div>
 
-  <label>
-    Live <input type="radio" name="album[recording_type]" value="Live"
+  </br>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="sizing-addon2">Band</span>
+      <select name="album[band_id]" class="form-control" aria-describedby="basic-addon1">
+        <% @bands.each do |band| %>
+          <option value="<%= band.id %>"
+              <% if band == @band %>
+                selected
+              <% end %>>
+            <%= band.name %>
+          </option>
+        <% end %>
+      </select>
+    </label>
+  </div>
+
+  </br>
+
+  <h5>Album Type </h5>
+  <label class="radio-inline">
+    <input type="radio" name="album[recording_type]" value="Live"
             <% if "Live" == @album.recording_type %>
               checked
             <% end %>>
-    Studio <input type="radio" name="album[recording_type]" value="Studio"
+    Live
+  </label>
+  <label class="radio-inline">
+    <input type="radio" name="album[recording_type]" value="Studio"
             <% if "Studio" == @album.recording_type %>
               checked
             <% end %>>
+    Studio
   </label>
 
-  <label> Year:
-    <input type="text" name="album[year]" value="<%= @album.year %>">
-  </label>
+  </br>
+  </br>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="sizing-addon2">Year</span>
+    <input type="text" name="album[year]" value="<%= @album.year %>" class="form-control" aria-describedby="basic-addon1">
+  </div>
+
+  </br>
 
   <% submit_text = @album.id.nil? ? "Add Album" : "Update Album" %>
-  <input type="submit" value="<%= submit_text %>">
+  <input type="submit" value="<%= submit_text %>" class="btn btn-primary">
 </form>

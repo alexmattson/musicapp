@@ -19,8 +19,10 @@ end
 end
 
 50.times do
-  User.create(email: Faker::Internet.email, password: "password")
+  User.create(email: Faker::Internet.email, password: "password", password2: "password")
 end
+
+User.create(email: "test@email.com", password: "password", password2: "password")
 
 5000.times do
   Note.create(note: Faker::Hipster.sentence,
