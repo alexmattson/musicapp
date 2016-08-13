@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'kaminari'
 gem "font-awesome-rails"
+gem 'faker'
 
 group :development, :test do
   gem 'byebug'
@@ -24,6 +25,5 @@ group :development do
   gem 'annotate'
   gem 'pry-rails'
   gem 'table_print'
-  gem 'faker'
   gem 'spring'
 end
