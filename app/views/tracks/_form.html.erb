@@ -4,40 +4,65 @@
   <% end %>
   <%= auth_token %>
 
-  <label> Name:
-    <input type="text" name="track[name]" value="<%= @track.name %>">
-  </label>
 
-  <label> Album:
-    <select name="track[album_id]">
-      <% @albums.each do |album| %>
-        <option value="<%= album.id %>"
-            <% if album == @album %>
-              selected
-            <% end %>>
-          <%= album.title %>
-        </option>
-      <% end %>
-    </select>
-  </label>
+  <div class="input-group">
+    <span class="input-group-addon" id="sizing-addon2">Name</span>
+    <input type="text" name="track[name]" value="<%= @track.name %>" class="form-control" aria-describedby="basic-addon1">
+  </div>
 
-  <label>Ord:
-    <input type="text" name="track[ord]" value="<%= @track.ord %>">
-  </label>
+  </br>
 
-  <label>
-    Standard <input type="radio" name="track[track_type]" value="Standard"
+  <div class="input-group">
+    <span class="input-group-addon" id="sizing-addon2">Album</span>
+      <select name="track[album_id]" class="form-control" aria-describedby="basic-addon1">
+        <% @albums.each do |album| %>
+          <option value="<%= album.id %>"
+              <% if album == @album %>
+                selected
+              <% end %>>
+            <%= album.title %>
+          </option>
+        <% end %>
+      </select>
+    </label>
+  </div>
+
+  </br>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="sizing-addon2">Ord</span>
+    <input type="text" name="track[ord]" value="<%= @track.ord %>" class="form-control" aria-describedby="basic-addon1">
+  </div>
+
+  </br>
+
+  <h5>Track type</h5>
+
+  <label class="radio-inline">
+    <input type="radio" name="track[track_type]" value="Standard"
                     <% if "Standard" == @track.track_type %>
                       checked
                     <% end %>>
-    Bonus <input type="radio" name="track[track_type]" value="Bonus"
+    Standard
+  </label>
+  <label class="radio-inline"></label>
+    <input type="radio" name="track[track_type]" value="Bonus"
                     <% if "Bonus" == @track.track_type %>
                       checked
                     <% end %>>
+    Bonus
   </label>
 
-  <textarea name="track[lyrics]" rows="8" cols="40"><%= @track.lyrics %></textarea>
+  </br>
+  </br>
+
+  <h5>Lyrics</h5>
+  <div class="form-group">
+    <textarea name="track[lyrics]" rows="8" cols="40" class="form-control"><%= @track.lyrics %></textarea>
+  </div>
+
+  </br>
 
   <% submit_text = @track.id.nil? ? "Add Track" : "Update Track" %>
-  <input type="submit" value="<%= submit_text %>">
+  <input type="submit" value="<%= submit_text %>" class="btn btn-primary">
 </form>
